@@ -19,8 +19,8 @@ PhoneBook::PhoneBook(Contact contacts[], int count) : _size(count)
 {
 	int i;
 	
-	if (count > 8)
-		count = 8;
+	if (count > MAX_CONTACTS)
+		count = MAX_CONTACTS;
 	i = 0;
 	while (i < count)
 	{
@@ -38,8 +38,8 @@ Contact &PhoneBook::operator[](int index)
 
 void	PhoneBook::saveContact(Contact contact)
 {
-	if (_size == 8)
-		_contacts[7] = contact;
+	if (_size == MAX_CONTACTS)
+		_contacts[MAX_CONTACTS - 1] = contact;
 	else
 	{
 		_contacts[_size] = contact;

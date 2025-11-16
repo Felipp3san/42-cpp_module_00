@@ -13,12 +13,13 @@
 #ifndef PHONEBOOK_HPP
 # define PHONEBOOK_HPP
 
-#include "Contact.hpp"
+# define MAX_CONTACTS 8
+# include "Contact.hpp"
 
 class	PhoneBook
 {
 private:
-	Contact	_contacts[8];
+	Contact	_contacts[MAX_CONTACTS];
 	int		_size;
 
 public:
