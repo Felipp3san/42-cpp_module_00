@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include <iostream>
+#include <iomanip>
 #include <ctime>
 #include "Account.hpp"
 
@@ -18,6 +19,20 @@ int Account::_nbAccounts;
 int Account::_totalAmount;
 int Account::_totalNbDeposits;
 int Account::_totalNbWithdrawals;
+
+Account::Account(void) :
+	_accountIndex(_nbAccounts),
+	_amount(0),
+	_nbDeposits(0),
+	_nbWithdrawals(0)
+{
+	_nbAccounts++;
+
+	_displayTimestamp();
+	std::cout << "index:" << _accountIndex << ";"
+		<< "amount:" << 0 << ";"
+		<< "created" << std::endl;
+};
 
 Account::Account(int initial_deposit) :
 	_accountIndex(_nbAccounts),
@@ -78,7 +93,7 @@ bool Account::makeWithdrawal(int withdrawal)
 
 	std::cout << "withdrawal:" << withdrawal << ";"
 		<< "amount:" << _amount << ";"
-		<< "_nbWithdrawals:" << _nbWithdrawals
+		<< "withdrawals:" << _nbWithdrawals
 		<< std::endl;
 
 	return (true);
@@ -138,11 +153,12 @@ void	Account::_displayTimestamp(void)
 	dt = *localtime(&timestamp);
 
 	std::cout << '['
-		<< 1900 + dt.tm_year << dt.tm_mon << dt.tm_mday
+		<< 1900 + dt.tm_year
+		<< std::setfill('0') << std::setw(2) << dt.tm_mon + 1
+		<< std::setfill('0') << std::setw(2) << dt.tm_mday
 		<< '_'
-		<< dt.tm_hour << dt.tm_min << dt.tm_sec
+		<< std::setfill('0') << std::setw(2) << dt.tm_hour
+		<< std::setfill('0') << std::setw(2) << dt.tm_min
+		<< std::setfill('0') << std::setw(2) << dt.tm_sec
 		<< "] ";
 }
-
-Account::Account(void)
-{};
