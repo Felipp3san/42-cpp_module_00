@@ -1,4 +1,4 @@
-# 42-cpp_module_00
+# CPP Module 00
 
 This repository contains solutions for **CPP Module 00** as part of the 42 School C++ modules.  
 These introductory exercises help you get started with the basics of C++:
